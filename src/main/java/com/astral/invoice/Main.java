@@ -10,6 +10,7 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        this.White = new java.awt.Color(255, 255, 255);
         initComponents();
     }
 
@@ -22,21 +23,128 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Title_Bar = new javax.swing.JPanel();
+        Title_Bar_Logo = new javax.swing.JLabel();
+        Window_Title = new javax.swing.JLabel();
+        Close = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Astral Invoice");
+        setUndecorated(true);
+        setResizable(false);
+
+        Title_Bar.setBackground(new java.awt.Color(60, 60, 60));
+        Title_Bar.setForeground(new java.awt.Color(142, 142, 142));
+        Title_Bar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                Title_BarMouseDragged(evt);
+            }
+        });
+        Title_Bar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Title_BarMousePressed(evt);
+            }
+        });
+
+        Title_Bar_Logo.setBackground(new java.awt.Color(60, 60, 60));
+        Title_Bar_Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title_Bar_Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/title-bar-logo.png"))); // NOI18N
+        Title_Bar_Logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Title_Bar_Logo.setOpaque(true);
+
+        Window_Title.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        Window_Title.setForeground(new java.awt.Color(142, 142, 142));
+        Window_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Window_Title.setText("A S T R A L    I N V O I C E");
+        Window_Title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Window_Title.setPreferredSize(new java.awt.Dimension(142, 16));
+        Window_Title.setRequestFocusEnabled(false);
+
+        Close.setBackground(new java.awt.Color(255, 255, 255));
+        Close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/close.png"))); // NOI18N
+        Close.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Close.setOpaque(true);
+        Close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CloseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CloseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CloseMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CloseMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Title_BarLayout = new javax.swing.GroupLayout(Title_Bar);
+        Title_Bar.setLayout(Title_BarLayout);
+        Title_BarLayout.setHorizontalGroup(
+            Title_BarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Title_BarLayout.createSequentialGroup()
+                .addComponent(Title_Bar_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(403, 403, 403)
+                .addComponent(Window_Title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
+                .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        Title_BarLayout.setVerticalGroup(
+            Title_BarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Window_Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Title_BarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Title_BarLayout.createSequentialGroup()
+                .addComponent(Title_Bar_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(Title_Bar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Title_Bar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 574, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_CloseMouseClicked
+
+    private void CloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseMouseEntered
+        Close.setBackground(new java.awt.Color(225, 72, 72));
+    }//GEN-LAST:event_CloseMouseEntered
+
+    private void CloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseMouseExited
+        Close.setBackground(White);
+    }//GEN-LAST:event_CloseMouseExited
+
+    private void CloseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseMousePressed
+        Close.setBackground(new java.awt.Color(225, 48, 48));
+    }//GEN-LAST:event_CloseMousePressed
+
+    private void Title_BarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_BarMouseDragged
+        int xx = evt.getXOnScreen();
+        int yy = evt.getYOnScreen();
+        this.setLocation(xx - x, yy - y);
+    }//GEN-LAST:event_Title_BarMouseDragged
+
+    private void Title_BarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_BarMousePressed
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_Title_BarMousePressed
 
     /**
      * @param args the command line arguments
@@ -68,5 +176,11 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Close;
+    private javax.swing.JPanel Title_Bar;
+    private javax.swing.JLabel Title_Bar_Logo;
+    private javax.swing.JLabel Window_Title;
     // End of variables declaration//GEN-END:variables
+    private final java.awt.Color White;
+    private int x, y;
 }
