@@ -30,6 +30,7 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Astral Invoice");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-icon.png")).getImage());
         setUndecorated(true);
         setResizable(false);
 
