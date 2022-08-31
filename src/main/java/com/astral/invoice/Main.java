@@ -45,6 +45,7 @@ public class Main extends javax.swing.JFrame {
         Settings = new javax.swing.JLabel();
         About = new javax.swing.JLabel();
         Help = new javax.swing.JLabel();
+        Content = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Astral Invoice");
@@ -280,20 +281,33 @@ public class Main extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
+        Content.setPreferredSize(new java.awt.Dimension(954, 574));
+
+        javax.swing.GroupLayout ContentLayout = new javax.swing.GroupLayout(Content);
+        Content.setLayout(ContentLayout);
+        ContentLayout.setHorizontalGroup(
+            ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 954, Short.MAX_VALUE)
+        );
+        ContentLayout.setVerticalGroup(
+            ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 574, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout ApplicationLayout = new javax.swing.GroupLayout(Application);
         Application.setLayout(ApplicationLayout);
         ApplicationLayout.setHorizontalGroup(
             ApplicationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ApplicationLayout.createSequentialGroup()
                 .addComponent(SideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 956, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(Content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
         ApplicationLayout.setVerticalGroup(
             ApplicationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ApplicationLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(SideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(SideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         Container.add(Application, "app");
@@ -473,6 +487,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Application;
     private javax.swing.JLabel Close;
     private javax.swing.JPanel Container;
+    private javax.swing.JDesktopPane Content;
     private javax.swing.JLabel Help;
     private javax.swing.JLabel New_Invoice;
     private javax.swing.JButton OK_Button;
