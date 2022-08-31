@@ -11,6 +11,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         this.White = new java.awt.Color(255, 255, 255);
+        com.astral.internal.SQLite.initDB();
         initComponents();
     }
 
@@ -121,6 +122,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseMouseClicked
+        com.astral.internal.SQLite.closeDB();
         System.exit(0);
     }//GEN-LAST:event_CloseMouseClicked
 
