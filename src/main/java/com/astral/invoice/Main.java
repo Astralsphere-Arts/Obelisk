@@ -16,6 +16,9 @@ public class Main extends javax.swing.JFrame {
         this.White = new java.awt.Color(255, 255, 255);
         initComponents();
         Container_Deck = (java.awt.CardLayout)Container.getLayout();
+        com.astral.invoice.New_Invoice scene = new New_Invoice();
+        scene.setBounds(0, 0, 954, 574);
+        Content.add(scene).setVisible(true);
         if (com.astral.internal.SQLite.firstUse)
             Container_Deck.show(Container, "start");
         else
@@ -162,6 +165,9 @@ public class Main extends javax.swing.JFrame {
         New_Invoice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         New_Invoice.setOpaque(true);
         New_Invoice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                New_InvoiceMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 New_InvoiceMouseEntered(evt);
             }
@@ -362,6 +368,13 @@ public class Main extends javax.swing.JFrame {
     private void OK_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OK_ButtonActionPerformed
         Container_Deck.show(Container, "app");
     }//GEN-LAST:event_OK_ButtonActionPerformed
+
+    private void New_InvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_InvoiceMouseClicked
+        Content.removeAll();
+        com.astral.invoice.New_Invoice scene = new New_Invoice();
+        scene.setBounds(0, 0, 954, 574);
+        Content.add(scene).setVisible(true);
+    }//GEN-LAST:event_New_InvoiceMouseClicked
 
     private void New_InvoiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_InvoiceMouseEntered
         Stored = New_Invoice.getBackground();
