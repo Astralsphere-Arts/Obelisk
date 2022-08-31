@@ -10,9 +10,16 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
-        this.White = new java.awt.Color(255, 255, 255);
         com.astral.internal.SQLite.initDB();
+        this.Active = new java.awt.Color(0, 136, 255);
+        this.Hover = new java.awt.Color(0, 165, 255);
+        this.White = new java.awt.Color(255, 255, 255);
         initComponents();
+        Container_Deck = (java.awt.CardLayout)Container.getLayout();
+        if (com.astral.internal.SQLite.firstUse)
+            Container_Deck.show(Container, "start");
+        else
+            Container_Deck.show(Container, "app");
     }
 
     /**
@@ -28,6 +35,16 @@ public class Main extends javax.swing.JFrame {
         Title_Bar_Logo = new javax.swing.JLabel();
         Window_Title = new javax.swing.JLabel();
         Close = new javax.swing.JLabel();
+        Container = new javax.swing.JPanel();
+        Welcome = new javax.swing.JPanel();
+        OK_Button = new javax.swing.JButton();
+        Application = new javax.swing.JPanel();
+        SideBar = new javax.swing.JPanel();
+        New_Invoice = new javax.swing.JLabel();
+        Product_List = new javax.swing.JLabel();
+        Settings = new javax.swing.JLabel();
+        About = new javax.swing.JLabel();
+        Help = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Astral Invoice");
@@ -104,22 +121,212 @@ public class Main extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        Container.setPreferredSize(new java.awt.Dimension(1000, 574));
+        Container.setLayout(new java.awt.CardLayout());
+
+        OK_Button.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        OK_Button.setText("OK");
+        OK_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OK_ButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout WelcomeLayout = new javax.swing.GroupLayout(Welcome);
+        Welcome.setLayout(WelcomeLayout);
+        WelcomeLayout.setHorizontalGroup(
+            WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WelcomeLayout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(OK_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(440, Short.MAX_VALUE))
+        );
+        WelcomeLayout.setVerticalGroup(
+            WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WelcomeLayout.createSequentialGroup()
+                .addContainerGap(498, Short.MAX_VALUE)
+                .addComponent(OK_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+
+        Container.add(Welcome, "start");
+
+        SideBar.setBackground(new java.awt.Color(51, 51, 51));
+        SideBar.setPreferredSize(new java.awt.Dimension(44, 574));
+
+        New_Invoice.setBackground(new java.awt.Color(0, 136, 255));
+        New_Invoice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        New_Invoice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/invoice.png"))); // NOI18N
+        New_Invoice.setToolTipText("New Invoice");
+        New_Invoice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        New_Invoice.setOpaque(true);
+        New_Invoice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                New_InvoiceMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                New_InvoiceMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                New_InvoiceMousePressed(evt);
+            }
+        });
+
+        Product_List.setBackground(new java.awt.Color(255, 255, 255));
+        Product_List.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Product_List.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/products.png"))); // NOI18N
+        Product_List.setToolTipText("Product List");
+        Product_List.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Product_List.setOpaque(true);
+        Product_List.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Product_ListMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Product_ListMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Product_ListMousePressed(evt);
+            }
+        });
+
+        Settings.setBackground(new java.awt.Color(255, 255, 255));
+        Settings.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Settings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/settings.png"))); // NOI18N
+        Settings.setToolTipText("Settings");
+        Settings.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Settings.setOpaque(true);
+        Settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SettingsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SettingsMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                SettingsMousePressed(evt);
+            }
+        });
+
+        About.setBackground(new java.awt.Color(255, 255, 255));
+        About.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        About.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/about.png"))); // NOI18N
+        About.setToolTipText("About");
+        About.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        About.setOpaque(true);
+        About.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AboutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AboutMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AboutMousePressed(evt);
+            }
+        });
+
+        Help.setBackground(new java.awt.Color(255, 255, 255));
+        Help.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/help.png"))); // NOI18N
+        Help.setToolTipText("Help");
+        Help.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Help.setOpaque(true);
+        Help.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HelpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HelpMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HelpMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SideBarLayout = new javax.swing.GroupLayout(SideBar);
+        SideBar.setLayout(SideBarLayout);
+        SideBarLayout.setHorizontalGroup(
+            SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SideBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SideBarLayout.createSequentialGroup()
+                        .addGroup(SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(New_Invoice)
+                            .addComponent(Settings)
+                            .addComponent(Help))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SideBarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Product_List, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(About, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
+        );
+        SideBarLayout.setVerticalGroup(
+            SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SideBarLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(New_Invoice)
+                .addGap(18, 18, 18)
+                .addComponent(Product_List)
+                .addGap(18, 18, 18)
+                .addComponent(Settings)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                .addComponent(About)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Help)
+                .addGap(26, 26, 26))
+        );
+
+        javax.swing.GroupLayout ApplicationLayout = new javax.swing.GroupLayout(Application);
+        Application.setLayout(ApplicationLayout);
+        ApplicationLayout.setHorizontalGroup(
+            ApplicationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ApplicationLayout.createSequentialGroup()
+                .addComponent(SideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 956, Short.MAX_VALUE))
+        );
+        ApplicationLayout.setVerticalGroup(
+            ApplicationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ApplicationLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(SideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
+        Container.add(Application, "app");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Title_Bar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Title_Bar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Title_Bar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 574, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(Container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Title_BarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_BarMousePressed
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_Title_BarMousePressed
+
+    private void Title_BarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_BarMouseDragged
+        int xx = evt.getXOnScreen();
+        int yy = evt.getYOnScreen();
+        this.setLocation(xx - x, yy - y);
+    }//GEN-LAST:event_Title_BarMouseDragged
 
     private void CloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseMouseClicked
         com.astral.internal.SQLite.closeDB();
@@ -138,16 +345,99 @@ public class Main extends javax.swing.JFrame {
         Close.setBackground(new java.awt.Color(225, 48, 48));
     }//GEN-LAST:event_CloseMousePressed
 
-    private void Title_BarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_BarMouseDragged
-        int xx = evt.getXOnScreen();
-        int yy = evt.getYOnScreen();
-        this.setLocation(xx - x, yy - y);
-    }//GEN-LAST:event_Title_BarMouseDragged
+    private void OK_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OK_ButtonActionPerformed
+        Container_Deck.show(Container, "app");
+    }//GEN-LAST:event_OK_ButtonActionPerformed
 
-    private void Title_BarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_BarMousePressed
-        x = evt.getX();
-        y = evt.getY();
-    }//GEN-LAST:event_Title_BarMousePressed
+    private void New_InvoiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_InvoiceMouseEntered
+        Stored = New_Invoice.getBackground();
+        New_Invoice.setBackground(Hover);
+    }//GEN-LAST:event_New_InvoiceMouseEntered
+
+    private void New_InvoiceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_InvoiceMouseExited
+        New_Invoice.setBackground(Stored);
+    }//GEN-LAST:event_New_InvoiceMouseExited
+
+    private void New_InvoiceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_InvoiceMousePressed
+        Help.setBackground(White);
+        New_Invoice.setBackground(Active);
+        Product_List.setBackground(White);
+        Settings.setBackground(White);
+        About.setBackground(White);
+        Stored = New_Invoice.getBackground();
+    }//GEN-LAST:event_New_InvoiceMousePressed
+
+    private void Product_ListMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Product_ListMouseEntered
+        Stored = Product_List.getBackground();
+        Product_List.setBackground(Hover);
+    }//GEN-LAST:event_Product_ListMouseEntered
+
+    private void Product_ListMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Product_ListMouseExited
+        Product_List.setBackground(Stored);
+    }//GEN-LAST:event_Product_ListMouseExited
+
+    private void Product_ListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Product_ListMousePressed
+        Help.setBackground(White);
+        New_Invoice.setBackground(White);
+        Product_List.setBackground(Active);
+        Settings.setBackground(White);
+        About.setBackground(White);
+        Stored = Product_List.getBackground();
+    }//GEN-LAST:event_Product_ListMousePressed
+
+    private void SettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseEntered
+        Stored = Settings.getBackground();
+        Settings.setBackground(Hover);
+    }//GEN-LAST:event_SettingsMouseEntered
+
+    private void SettingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseExited
+        Settings.setBackground(Stored);
+    }//GEN-LAST:event_SettingsMouseExited
+
+    private void SettingsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMousePressed
+        Help.setBackground(White);
+        New_Invoice.setBackground(White);
+        Product_List.setBackground(White);
+        Settings.setBackground(Active);
+        About.setBackground(White);
+        Stored = Settings.getBackground();
+    }//GEN-LAST:event_SettingsMousePressed
+
+    private void AboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AboutMouseEntered
+        Stored = About.getBackground();
+        About.setBackground(Hover);
+    }//GEN-LAST:event_AboutMouseEntered
+
+    private void AboutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AboutMouseExited
+        About.setBackground(Stored);
+    }//GEN-LAST:event_AboutMouseExited
+
+    private void AboutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AboutMousePressed
+        Help.setBackground(White);
+        New_Invoice.setBackground(White);
+        Product_List.setBackground(White);
+        Settings.setBackground(White);
+        About.setBackground(Active);
+        Stored = About.getBackground();
+    }//GEN-LAST:event_AboutMousePressed
+
+    private void HelpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseEntered
+        Stored = Help.getBackground();
+        Help.setBackground(Hover);
+    }//GEN-LAST:event_HelpMouseEntered
+
+    private void HelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseExited
+        Help.setBackground(Stored);
+    }//GEN-LAST:event_HelpMouseExited
+
+    private void HelpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMousePressed
+        Help.setBackground(Active);
+        New_Invoice.setBackground(White);
+        Product_List.setBackground(White);
+        Settings.setBackground(White);
+        About.setBackground(White);
+        Stored = Help.getBackground();
+    }//GEN-LAST:event_HelpMousePressed
 
     /**
      * @param args the command line arguments
@@ -179,11 +469,25 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel About;
+    private javax.swing.JPanel Application;
     private javax.swing.JLabel Close;
+    private javax.swing.JPanel Container;
+    private javax.swing.JLabel Help;
+    private javax.swing.JLabel New_Invoice;
+    private javax.swing.JButton OK_Button;
+    private javax.swing.JLabel Product_List;
+    private javax.swing.JLabel Settings;
+    private javax.swing.JPanel SideBar;
     private javax.swing.JPanel Title_Bar;
     private javax.swing.JLabel Title_Bar_Logo;
+    private javax.swing.JPanel Welcome;
     private javax.swing.JLabel Window_Title;
     // End of variables declaration//GEN-END:variables
+    private final java.awt.CardLayout Container_Deck;
+    private final java.awt.Color Active;
+    private final java.awt.Color Hover;
     private final java.awt.Color White;
+    private java.awt.Color Stored;
     private int x, y;
 }
