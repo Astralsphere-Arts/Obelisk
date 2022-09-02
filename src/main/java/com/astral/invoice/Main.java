@@ -10,6 +10,7 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        Version = "0.2-alpha";
         com.astral.internal.SQLite.initDB();
         Active = new java.awt.Color(0, 136, 255);
         Hover = new java.awt.Color(0, 165, 255);
@@ -225,6 +226,9 @@ public class Main extends javax.swing.JFrame {
         About.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         About.setOpaque(true);
         About.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AboutMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 AboutMouseEntered(evt);
             }
@@ -444,6 +448,13 @@ public class Main extends javax.swing.JFrame {
         Stored = Settings.getBackground();
     }//GEN-LAST:event_SettingsMousePressed
 
+    private void AboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AboutMouseClicked
+        Content.removeAll();
+        com.astral.invoice.About scene = new About();
+        scene.setBounds(0, 0, 954, 574);
+        Content.add(scene).setVisible(true);
+    }//GEN-LAST:event_AboutMouseClicked
+
     private void AboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AboutMouseEntered
         Stored = About.getBackground();
         About.setBackground(Hover);
@@ -531,5 +542,6 @@ public class Main extends javax.swing.JFrame {
     private static java.awt.Color Hover;
     private static java.awt.Color White;
     private static java.awt.Color Stored;
+    public static String Version;
     private int x, y;
 }
