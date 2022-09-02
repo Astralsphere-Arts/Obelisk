@@ -13,6 +13,7 @@ import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.pdf.draw.LineSeparator;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.sql.ResultSet;
@@ -75,6 +76,40 @@ public class Function {
                 invoTableModel.addRow(row);
             }
             return invoTableModel;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
+    public static TableModel productTableModel() {
+        ResultSet prodResult = com.astral.internal.SQLite.productData();
+        DefaultTableModel prodTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return columnIndex != 0;
+            }
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class,
+                java.lang.Double.class
+            };
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        };
+        try {
+            ResultSetMetaData prodMeta = prodResult.getMetaData();
+            int numberOfColumns = prodMeta.getColumnCount();
+            for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++)
+                prodTableModel.addColumn(prodMeta.getColumnLabel(columnIndex + 1));
+            Object[] row = new Object[numberOfColumns];
+            while (prodResult.next()) {
+                for (int i = 0; i < numberOfColumns; i++)
+                    row[i] = prodResult.getObject(i+1);
+                prodTableModel.addRow(row);
+            }
+            return prodTableModel;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
             return null;
@@ -204,6 +239,41 @@ public class Function {
             document.add(table);
             document.close();
         } catch (DocumentException | IOException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public static void prodCSVex(File CSV) {
+        ResultSet productData = com.astral.internal.SQLite.productData();
+        try (FileWriter prodCSV = new FileWriter(CSV)) {
+            ResultSetMetaData invMeta = productData.getMetaData();
+            prodCSV.write("\"" + invMeta.getColumnLabel(1) + "\",");
+            prodCSV.write("\"" + invMeta.getColumnLabel(2) + "\",");
+            prodCSV.write("\"" + invMeta.getColumnLabel(3) + "\"\r\n");
+            while (productData.next()) {
+                prodCSV.write("\"" + productData.getString("Product ID") + "\",");
+                prodCSV.write("\"" + productData.getString("Product Name") + "\",");
+                prodCSV.write("\"" + productData.getString("Price") + "\"\r\n");
+            }
+            prodCSV.close();
+        } catch (IOException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public static void prodCSVim(File CSV) {
+        try {
+            String CSV_Line;
+            java.io.BufferedReader CSV_Reader = new java.io.BufferedReader(new java.io.FileReader(CSV));
+            while ((CSV_Line = CSV_Reader.readLine()) != null) {
+                String[] CSV_Parts = CSV_Line.replace("\"", "").split(",");
+                String PID = CSV_Parts[0];
+                String name = CSV_Parts[1];
+                String price = CSV_Parts[2];
+                if (!PID.equals("Product ID"))
+                    com.astral.internal.SQLite.updateProduct(PID, name, price);
+            }
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
