@@ -1,6 +1,9 @@
 package com.astral.invoice;
 
 import java.awt.Component;
+import java.awt.Desktop;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
@@ -169,7 +172,67 @@ public class New_Invoice extends javax.swing.JPanel {
     }//GEN-LAST:event_Edit_ListActionPerformed
 
     private void Create_InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_InvoiceActionPerformed
-        
+        int prodSelected = 0;
+        boolean emptyQuan = false;
+        String invID = "INV-" + new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date())
+            + "-" + com.astral.internal.Function.randomID(4);
+        String custName = Customer_Name.getText();
+        String custContact = Contact_Number.getText();
+        String custAddress = Customer_Address.getText();
+        String saleDate = new java.text.SimpleDateFormat("dd MMMM yyyy").format(new java.util.Date());
+        String saleAmount = "0";
+        for (int row = 0; row < New_Invoice_Table.getRowCount(); row++) {
+            if (Boolean.valueOf(New_Invoice_Table.getValueAt(row, 0).toString())) {
+                prodSelected++;
+                String Quantity = "0";
+                if (New_Invoice_Table.getValueAt(row, 4) != null)
+                    Quantity = Integer.toString((Integer) New_Invoice_Table.getValueAt(row, 4));
+                if (Quantity.equals("0"))
+                    emptyQuan = true;
+            }
+        }
+        if (custName.equals("") || custContact.equals("") || custAddress.equals(""))
+            JOptionPane.showMessageDialog(null, "Customer Details can't be Empty. Please"
+                + " Try Again!", "Customer Details Empty", JOptionPane.ERROR_MESSAGE);
+        else if (prodSelected == 0)
+            JOptionPane.showMessageDialog(null, "At least one Product needs to be Selected. Please"
+                + " Try Again!", "No Products Selected", JOptionPane.ERROR_MESSAGE);
+        else if (emptyQuan)
+            JOptionPane.showMessageDialog(null, "Purchased Quantity for one or more Products is Empty."
+                + " Please Try Again!", "Purchased Quantity Empty", JOptionPane.ERROR_MESSAGE);
+        else {
+            String invoiceTable[][] = new String[prodSelected][5];
+            int tableRow = 0;
+            for (int row = 0; row < New_Invoice_Table.getRowCount(); row++) {
+                if (Boolean.valueOf(New_Invoice_Table.getValueAt(row, 0).toString())) {
+                    String prodID = (String) New_Invoice_Table.getValueAt(row, 1);
+                    String prodName = (String) New_Invoice_Table.getValueAt(row, 2);
+                    String Price = Double.toString((Double) New_Invoice_Table.getValueAt(row, 3));
+                    String Quantity = Integer.toString((Integer) New_Invoice_Table.getValueAt(row, 4));
+                    String netAmount = Double.toString(Double.parseDouble(Price) *
+                        Double.parseDouble(Quantity));
+                    saleAmount = Double.toString(Double.parseDouble(saleAmount) +
+                        Double.parseDouble(netAmount));
+                    invoiceTable[tableRow][0] = prodID;
+                    invoiceTable[tableRow][1] = prodName;
+                    invoiceTable[tableRow][2] = Price;
+                    invoiceTable[tableRow][3] = Quantity;
+                    invoiceTable[tableRow][4] = netAmount;
+                    tableRow++;
+                }
+            }
+            com.astral.internal.Function.invoicePDF(invID, custName, custContact, custAddress,
+                saleDate, saleAmount, prodSelected, invoiceTable);
+            com.astral.invoice.Main.Content.removeAll();
+            com.astral.invoice.New_Invoice scene = new New_Invoice();
+            scene.setBounds(0, 0, 954, 574);
+            com.astral.invoice.Main.Content.add(scene).setVisible(true);
+            try {
+                Desktop.getDesktop().open(com.astral.internal.Function.invPath);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_Create_InvoiceActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

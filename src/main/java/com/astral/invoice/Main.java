@@ -500,7 +500,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Application;
     private javax.swing.JLabel Close;
     private javax.swing.JPanel Container;
-    private javax.swing.JDesktopPane Content;
+    public static javax.swing.JDesktopPane Content;
     private javax.swing.JLabel Help;
     private javax.swing.JLabel New_Invoice;
     private javax.swing.JButton OK_Button;

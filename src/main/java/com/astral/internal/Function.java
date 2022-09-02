@@ -1,10 +1,25 @@
 package com.astral.internal;
 
+import com.lowagie.text.Chunk;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Rectangle;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.draw.LineSeparator;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -14,8 +29,12 @@ import javax.swing.table.TableModel;
  */
 
 public class Function {
+    public static File invPath;
     static String Seed = "0123456789";
     static SecureRandom random = new SecureRandom();
+    static File invFolder = new File(FileSystemView.getFileSystemView()
+        .getDefaultDirectory().getPath() + File.separator + "Astral Invoice");
+    static java.awt.Color TableHeader = new java.awt.Color(240, 240, 240);
     
     public static String randomID(int length) {
         StringBuilder builder = new StringBuilder(length);
@@ -59,6 +78,133 @@ public class Function {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
             return null;
+        }
+    }
+       
+    public static void invoicePDF(String invID, String custName, String custContact, String custAddress,
+            String saleDate, String saleAmount, int prodSelected, String invoiceTable[][]) {
+        invFolder.mkdir();
+        invPath = new File(invFolder + File.separator + invID + ".pdf");
+        try (Document document = new Document()) {
+            PdfWriter.getInstance(document, new FileOutputStream(invPath));
+            document.open();
+            Paragraph para = new Paragraph(com.astral.internal.SQLite.getConfigValue("Business Name"),
+                FontFactory.getFont(FontFactory.TIMES_BOLD, 20));
+            para.setAlignment(Element.ALIGN_CENTER);
+            document.add(para);
+            para = new Paragraph(com.astral.internal.SQLite.getConfigValue("Business Location"));
+            para.setAlignment(Element.ALIGN_CENTER);
+            document.add(para);
+            para = new Paragraph("Contact Number : " + com.astral.internal.SQLite.getConfigValue("Contact Number")
+                + "    Email : " + com.astral.internal.SQLite.getConfigValue("Email Address"));
+            para.setAlignment(Element.ALIGN_CENTER);
+            para.setSpacingAfter(30f);
+            document.add(para);
+            document.add(new LineSeparator());
+            PdfPTable table = new PdfPTable(2);
+            para = new Paragraph();
+            Chunk chunk = new Chunk("Invoice Number : ", FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            para.add(chunk);
+            chunk = new Chunk(invID, FontFactory.getFont(FontFactory.HELVETICA));
+            para.add(chunk);
+            PdfPCell cell = new PdfPCell(para);
+            cell.setBorder(Rectangle.NO_BORDER);
+            cell.setPadding(0);
+            table.addCell(cell);
+            para = new Paragraph();
+            chunk = new Chunk("Invoice Date : ", FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            para.add(chunk);
+            chunk = new Chunk(saleDate, FontFactory.getFont(FontFactory.HELVETICA));
+            para.add(chunk);
+            cell = new PdfPCell(para);
+            cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell.setBorder(Rectangle.NO_BORDER);
+            cell.setPadding(0);
+            table.addCell(cell);
+            table.setSpacingAfter(20f);
+            table.setSpacingBefore(20f);
+            table.setWidthPercentage(100);
+            document.add(table);
+            para = new Paragraph();
+            chunk = new Chunk("Billed To : ", FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            para.add(chunk);
+            chunk = new Chunk(custName, FontFactory.getFont(FontFactory.HELVETICA));
+            para.add(chunk);
+            document.add(para);
+            para = new Paragraph();
+            chunk = new Chunk("Contact Number : ", FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            para.add(chunk);
+            chunk = new Chunk(custContact, FontFactory.getFont(FontFactory.HELVETICA));
+            para.add(chunk);
+            document.add(para);
+            para = new Paragraph();
+            chunk = new Chunk("Billing Address : ", FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            para.add(chunk);
+            chunk = new Chunk(custAddress, FontFactory.getFont(FontFactory.HELVETICA));
+            para.add(chunk);
+            document.add(para);
+            float[] widths = {10f, 44f, 15f, 14f, 17f};
+            table = new PdfPTable(widths);
+            cell = new PdfPCell(new Paragraph("S.No.", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(TableHeader);
+            cell.setPadding(10f);
+            table.addCell(cell);
+            cell = new PdfPCell(new Paragraph("Product Name", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell.setBackgroundColor(TableHeader);
+            cell.setPadding(10f);
+            table.addCell(cell);
+            cell = new PdfPCell(new Paragraph("Unit Price", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(TableHeader);
+            cell.setPadding(10f);
+            table.addCell(cell);
+            cell = new PdfPCell(new Paragraph("Quantity", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(TableHeader);
+            cell.setPadding(10f);
+            table.addCell(cell);
+            cell = new PdfPCell(new Paragraph("Net Amount", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(TableHeader);
+            cell.setPadding(10f);
+            table.addCell(cell);
+            for (int row = 0; row < prodSelected; row++) {
+                cell = new PdfPCell(new Paragraph(Integer.toString(row + 1), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell.setPadding(10f);
+                table.addCell(cell);
+                cell = new PdfPCell(new Paragraph(invoiceTable[row][1], FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell.setPadding(10f);
+                table.addCell(cell);
+                cell = new PdfPCell(new Paragraph(invoiceTable[row][2], FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell.setPadding(10f);
+                table.addCell(cell);
+                cell = new PdfPCell(new Paragraph(invoiceTable[row][3], FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell.setPadding(10f);
+                table.addCell(cell);
+                cell = new PdfPCell(new Paragraph(invoiceTable[row][4], FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell.setPadding(10f);
+                table.addCell(cell);
+            }
+            cell = new PdfPCell(new Paragraph("Total Amount", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell.setPadding(10f);
+            cell.setColspan(4);
+            table.addCell(cell);
+            cell = new PdfPCell(new Paragraph(saleAmount, FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell.setPadding(10f);
+            table.addCell(cell);
+            table.setSpacingBefore(40f);
+            table.setWidthPercentage(100);
+            document.add(table);
+            document.close();
+        } catch (DocumentException | IOException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
