@@ -33,7 +33,7 @@ public class Function {
     public static File invPath;
     static String Seed = "0123456789";
     static SecureRandom random = new SecureRandom();
-    static File invFolder = new File(FileSystemView.getFileSystemView()
+    public static File invFolder = new File(FileSystemView.getFileSystemView()
         .getDefaultDirectory().getPath() + File.separator + "Astral Invoice");
     static java.awt.Color TableHeader = new java.awt.Color(224, 224, 224);
     
