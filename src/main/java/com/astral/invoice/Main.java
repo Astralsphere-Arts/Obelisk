@@ -248,6 +248,9 @@ public class Main extends javax.swing.JFrame {
         Help.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Help.setOpaque(true);
         Help.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HelpMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 HelpMouseEntered(evt);
             }
@@ -462,6 +465,13 @@ public class Main extends javax.swing.JFrame {
         Help.setBackground(White);
         Stored = About.getBackground();
     }//GEN-LAST:event_AboutMousePressed
+
+    private void HelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseClicked
+        Content.removeAll();
+        com.astral.invoice.Help scene = new Help();
+        scene.setBounds(0, 0, 954, 574);
+        Content.add(scene).setVisible(true);
+    }//GEN-LAST:event_HelpMouseClicked
 
     private void HelpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseEntered
         Stored = Help.getBackground();
