@@ -35,7 +35,7 @@ public class Function {
     static SecureRandom random = new SecureRandom();
     static File invFolder = new File(FileSystemView.getFileSystemView()
         .getDefaultDirectory().getPath() + File.separator + "Astral Invoice");
-    static java.awt.Color TableHeader = new java.awt.Color(240, 240, 240);
+    static java.awt.Color TableHeader = new java.awt.Color(224, 224, 224);
     
     public static String randomID(int length) {
         StringBuilder builder = new StringBuilder(length);
@@ -205,8 +205,8 @@ public class Function {
             cell.setPadding(10f);
             table.addCell(cell);
             for (int row = 0; row < prodSelected; row++) {
-                cell = new PdfPCell(new Paragraph(Integer.toString(row + 1), FontFactory.getFont(FontFactory.HELVETICA, 10)));
-                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell = new PdfPCell(new Paragraph(String.format("%02d", row + 1), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setPadding(10f);
                 table.addCell(cell);
                 cell = new PdfPCell(new Paragraph(invoiceTable[row][1], FontFactory.getFont(FontFactory.HELVETICA, 10)));
