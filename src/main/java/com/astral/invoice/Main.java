@@ -17,9 +17,7 @@ public class Main extends javax.swing.JFrame {
         White = new java.awt.Color(255, 255, 255);
         initComponents();
         Container_Deck = (java.awt.CardLayout)Container.getLayout();
-        com.astral.invoice.New_Invoice scene = new New_Invoice();
-        scene.setBounds(0, 0, 954, 574);
-        Content.add(scene).setVisible(true);
+        Load_New_Invoice();
         if (com.astral.internal.SQLite.firstUse)
             Container_Deck.show(Container, "start");
         else
@@ -377,10 +375,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_OK_ButtonActionPerformed
 
     private void New_InvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_InvoiceMouseClicked
-        Content.removeAll();
-        com.astral.invoice.New_Invoice scene = new New_Invoice();
-        scene.setBounds(0, 0, 954, 574);
-        Content.add(scene).setVisible(true);
+        Load_New_Invoice();
     }//GEN-LAST:event_New_InvoiceMouseClicked
 
     private void New_InvoiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_InvoiceMouseEntered
@@ -400,21 +395,9 @@ public class Main extends javax.swing.JFrame {
         Help.setBackground(White);
         Stored = New_Invoice.getBackground();
     }//GEN-LAST:event_New_InvoiceMousePressed
-    
-    public static void Product_List_Edit_ActionPerformed() {
-        New_Invoice.setBackground(White);
-        Product_List.setBackground(Active);
-        Settings.setBackground(White);
-        About.setBackground(White);
-        Help.setBackground(White);
-        Stored = Product_List.getBackground();
-    }
 
     private void Product_ListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Product_ListMouseClicked
-        Content.removeAll();
-        com.astral.invoice.Product_List scene = new Product_List();
-        scene.setBounds(0, 0, 954, 574);
-        Content.add(scene).setVisible(true);
+        Load_Product_List();
     }//GEN-LAST:event_Product_ListMouseClicked
 
     private void Product_ListMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Product_ListMouseEntered
@@ -427,7 +410,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_Product_ListMouseExited
 
     private void Product_ListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Product_ListMousePressed
-        Product_List_Edit_ActionPerformed();
+        Product_List_Icon_Active();
     }//GEN-LAST:event_Product_ListMousePressed
 
     private void SettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseEntered
@@ -490,6 +473,29 @@ public class Main extends javax.swing.JFrame {
         Help.setBackground(Active);
         Stored = Help.getBackground();
     }//GEN-LAST:event_HelpMousePressed
+
+    public static void Load_New_Invoice() {
+        Content.removeAll();
+        com.astral.invoice.New_Invoice scene = new New_Invoice();
+        scene.setBounds(0, 0, 954, 574);
+        Content.add(scene).setVisible(true);
+    }
+    
+    public static void Load_Product_List() {
+        Content.removeAll();
+        com.astral.invoice.Product_List scene = new Product_List();
+        scene.setBounds(0, 0, 954, 574);
+        Content.add(scene).setVisible(true);
+    }
+    
+    public static void Product_List_Icon_Active() {
+        New_Invoice.setBackground(White);
+        Product_List.setBackground(Active);
+        Settings.setBackground(White);
+        About.setBackground(White);
+        Help.setBackground(White);
+        Stored = Product_List.getBackground();
+    }
 
     /**
      * @param args the command line arguments
