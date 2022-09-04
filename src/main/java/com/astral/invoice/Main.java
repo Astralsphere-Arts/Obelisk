@@ -1,5 +1,7 @@
 package com.astral.invoice;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Astralsphere Arts
@@ -10,7 +12,7 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
-        Version = "0.2-alpha";
+        Version = "0.5-beta";
         com.astral.internal.SQLite.initDB();
         Active = new java.awt.Color(0, 136, 255);
         Hover = new java.awt.Color(0, 165, 255);
@@ -39,7 +41,21 @@ public class Main extends javax.swing.JFrame {
         Close = new javax.swing.JLabel();
         Container = new javax.swing.JPanel();
         Welcome = new javax.swing.JPanel();
-        OK_Button = new javax.swing.JButton();
+        Heading = new javax.swing.JLabel();
+        Paragraph_A = new javax.swing.JLabel();
+        Paragraph_B = new javax.swing.JLabel();
+        Owner_Name_Label = new javax.swing.JLabel();
+        Owner_Name = new javax.swing.JTextField();
+        Business_Name_Label = new javax.swing.JLabel();
+        Business_Name = new javax.swing.JTextField();
+        Contact_Number_Label = new javax.swing.JLabel();
+        Contact_Number = new javax.swing.JTextField();
+        Email_Address_Label = new javax.swing.JLabel();
+        Email_Address = new javax.swing.JTextField();
+        Business_Location_Label = new javax.swing.JLabel();
+        Business_Location = new javax.swing.JTextField();
+        Finish_Button = new javax.swing.JButton();
+        App_Logo = new javax.swing.JLabel();
         Application = new javax.swing.JPanel();
         SideBar = new javax.swing.JPanel();
         New_Invoice = new javax.swing.JLabel();
@@ -127,29 +143,150 @@ public class Main extends javax.swing.JFrame {
         Container.setPreferredSize(new java.awt.Dimension(1000, 574));
         Container.setLayout(new java.awt.CardLayout());
 
-        OK_Button.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        OK_Button.setText("OK");
-        OK_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OK_ButtonActionPerformed(evt);
+        Welcome.setPreferredSize(new java.awt.Dimension(1000, 574));
+
+        Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 30)); // NOI18N
+        Heading.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Heading.setText("Welcome To Astral Invoice!");
+        Heading.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Paragraph_A.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        Paragraph_A.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Paragraph_A.setText("Since this is Your First Time using Astral Invoice,");
+        Paragraph_A.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Paragraph_B.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        Paragraph_B.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Paragraph_B.setText("We need some Details about You and Your Business to Set Things up for You.");
+        Paragraph_B.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Owner_Name_Label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        Owner_Name_Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Owner_Name_Label.setText("Your(Owner's) Name");
+        Owner_Name_Label.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Owner_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        Business_Name_Label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        Business_Name_Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Business_Name_Label.setText("Business Name");
+        Business_Name_Label.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Business_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        Contact_Number_Label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        Contact_Number_Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Contact_Number_Label.setText("Contact Number");
+        Contact_Number_Label.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Contact_Number.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Contact_Number.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Contact_NumberKeyPressed(evt);
             }
         });
+
+        Email_Address_Label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        Email_Address_Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Email_Address_Label.setText("Email Address");
+        Email_Address_Label.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Email_Address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        Business_Location_Label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        Business_Location_Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Business_Location_Label.setText("Business Location (Address)");
+        Business_Location_Label.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Business_Location.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        Finish_Button.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        Finish_Button.setText("Finish");
+        Finish_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Finish_ButtonActionPerformed(evt);
+            }
+        });
+
+        App_Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-logo-large.png"))); // NOI18N
 
         javax.swing.GroupLayout WelcomeLayout = new javax.swing.GroupLayout(Welcome);
         Welcome.setLayout(WelcomeLayout);
         WelcomeLayout.setHorizontalGroup(
             WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WelcomeLayout.createSequentialGroup()
-                .addGap(440, 440, 440)
-                .addComponent(OK_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addGroup(WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(WelcomeLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(WelcomeLayout.createSequentialGroup()
+                                    .addComponent(Owner_Name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Owner_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, WelcomeLayout.createSequentialGroup()
+                                    .addComponent(Email_Address_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Email_Address, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, WelcomeLayout.createSequentialGroup()
+                                    .addComponent(Business_Name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Business_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, WelcomeLayout.createSequentialGroup()
+                                    .addComponent(Contact_Number_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Contact_Number, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Paragraph_A, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Paragraph_B, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, WelcomeLayout.createSequentialGroup()
+                                    .addComponent(Business_Location_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Business_Location, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WelcomeLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Finish_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135)))
+                .addComponent(App_Logo)
+                .addGap(90, 90, 90))
         );
         WelcomeLayout.setVerticalGroup(
             WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WelcomeLayout.createSequentialGroup()
-                .addContainerGap(498, Short.MAX_VALUE)
-                .addComponent(OK_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+            .addGroup(WelcomeLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Paragraph_A)
+                .addGap(0, 0, 0)
+                .addComponent(Paragraph_B)
+                .addGap(26, 26, 26)
+                .addGroup(WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Owner_Name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Owner_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Business_Name_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Business_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Contact_Number_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Contact_Number))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Email_Address_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Email_Address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Business_Location_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Business_Location, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(Finish_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(WelcomeLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(App_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         Container.add(Welcome, "start");
@@ -376,9 +513,41 @@ public class Main extends javax.swing.JFrame {
         Close.setBackground(new java.awt.Color(225, 48, 48));
     }//GEN-LAST:event_CloseMousePressed
 
-    private void OK_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OK_ButtonActionPerformed
-        Container_Deck.show(Container, "app");
-    }//GEN-LAST:event_OK_ButtonActionPerformed
+    private void Contact_NumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Contact_NumberKeyPressed
+        String Number = Contact_Number.getText();
+        int length = Number.length();
+        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9') {
+            if (length < 10)
+            Contact_Number.setEditable(true);
+            else
+            Contact_Number.setEditable(false);
+        } else {
+            switch (evt.getExtendedKeyCode()) {
+                case java.awt.event.KeyEvent.VK_BACK_SPACE -> Contact_Number.setEditable(true);
+                case java.awt.event.KeyEvent.VK_DELETE -> Contact_Number.setEditable(true);
+                default -> Contact_Number.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_Contact_NumberKeyPressed
+
+    private void Finish_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Finish_ButtonActionPerformed
+        String ownerName = Owner_Name.getText();
+        String bizName = Business_Name.getText();
+        String bizNumber = Contact_Number.getText();
+        String bizMail = Email_Address.getText();
+        String bizAddress = Business_Location.getText();
+        if (ownerName.equals("") || bizName.equals("") || bizNumber.equals("") ||
+            bizMail.equals("") || bizAddress.equals(""))
+            JOptionPane.showMessageDialog(null, "All Fields are Required to be Filled."
+                + " Please Try Again!", "Empty Feilds", JOptionPane.ERROR_MESSAGE);
+        else if (bizNumber.length() != 10)
+            JOptionPane.showMessageDialog(null, "Contact Number Must be 10 Digit Long. Please"
+                + " Try Again!", "Contact Number Too Short", JOptionPane.ERROR_MESSAGE);
+        else {
+            com.astral.internal.SQLite.setConfigData(ownerName, bizName, bizNumber, bizMail, bizAddress);
+            Container_Deck.show(Container, "app");
+        }
+    }//GEN-LAST:event_Finish_ButtonActionPerformed
 
     private void New_InvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_InvoiceMouseClicked
         Load_New_Invoice();
@@ -552,13 +721,27 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JLabel About;
+    private javax.swing.JLabel App_Logo;
     private javax.swing.JPanel Application;
+    private javax.swing.JTextField Business_Location;
+    private javax.swing.JLabel Business_Location_Label;
+    private javax.swing.JTextField Business_Name;
+    private javax.swing.JLabel Business_Name_Label;
     private javax.swing.JLabel Close;
+    private javax.swing.JTextField Contact_Number;
+    private javax.swing.JLabel Contact_Number_Label;
     private javax.swing.JPanel Container;
     public static javax.swing.JDesktopPane Content;
+    private javax.swing.JTextField Email_Address;
+    private javax.swing.JLabel Email_Address_Label;
+    private javax.swing.JButton Finish_Button;
+    private javax.swing.JLabel Heading;
     private static javax.swing.JLabel Help;
     private static javax.swing.JLabel New_Invoice;
-    private javax.swing.JButton OK_Button;
+    private javax.swing.JTextField Owner_Name;
+    private javax.swing.JLabel Owner_Name_Label;
+    private javax.swing.JLabel Paragraph_A;
+    private javax.swing.JLabel Paragraph_B;
     private static javax.swing.JLabel Product_List;
     private static javax.swing.JLabel Settings;
     private javax.swing.JPanel SideBar;
