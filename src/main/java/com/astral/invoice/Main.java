@@ -206,6 +206,9 @@ public class Main extends javax.swing.JFrame {
         Settings.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Settings.setOpaque(true);
         Settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SettingsMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 SettingsMouseEntered(evt);
             }
@@ -413,6 +416,10 @@ public class Main extends javax.swing.JFrame {
         Product_List_Icon_Active();
     }//GEN-LAST:event_Product_ListMousePressed
 
+    private void SettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseClicked
+        Load_Settings();
+    }//GEN-LAST:event_SettingsMouseClicked
+
     private void SettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseEntered
         Stored = Settings.getBackground();
         Settings.setBackground(Hover);
@@ -484,6 +491,13 @@ public class Main extends javax.swing.JFrame {
     public static void Load_Product_List() {
         Content.removeAll();
         com.astral.invoice.Product_List scene = new Product_List();
+        scene.setBounds(0, 0, 954, 574);
+        Content.add(scene).setVisible(true);
+    }
+    
+    public static void Load_Settings() {
+        Content.removeAll();
+        com.astral.invoice.Settings scene = new Settings();
         scene.setBounds(0, 0, 954, 574);
         Content.add(scene).setVisible(true);
     }

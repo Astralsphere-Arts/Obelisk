@@ -61,7 +61,7 @@ public class SQLite {
             + " KEY(\"Product ID\"));";
         String configuration = "CREATE TABLE IF NOT EXISTS Configuration (Parameter"
             + " TEXT NOT NULL UNIQUE, Value TEXT, PRIMARY KEY(Parameter));";
-        String configData = "INSERT INTO Configuration (Parameter) VALUES ('Username'),"
+        String configData = "INSERT INTO Configuration (Parameter) VALUES ('Business Owner Name'),"
             + " ('Business Name'), ('Contact Number'), ('Email Address'),"
             + " ('Business Location');";
         try {
@@ -75,29 +75,30 @@ public class SQLite {
         }
     }
     
-    public static void setConfigData(String usrname, String cname, String cnumber, String cmail, String caddress) {
+    public static void setConfigData(String ownerName, String bizName, String bizNumber, String bizMail,
+            String bizAddress) {
         if (configDB == null)
             dbConnect();
-        String username = "UPDATE Configuration SET Value = ? WHERE Parameter = 'Username';";
+        String username = "UPDATE Configuration SET Value = ? WHERE Parameter = 'Business Owner Name';";
         String name = "UPDATE Configuration SET Value = ? WHERE Parameter = 'Business Name';";
         String number = "UPDATE Configuration SET Value = ? WHERE Parameter = 'Contact Number';";
         String email = "UPDATE Configuration SET Value = ? WHERE Parameter = 'Email Address';";
         String address = "UPDATE Configuration SET Value = ? WHERE Parameter = 'Business Location';";
         try {
             PreparedStatement configDBquery = configDB.prepareStatement(username);
-            configDBquery.setString(1, usrname);
+            configDBquery.setString(1, ownerName);
             configDBquery.executeUpdate();
             configDBquery = configDB.prepareStatement(name);
-            configDBquery.setString(1, cname);
+            configDBquery.setString(1, bizName);
             configDBquery.executeUpdate();
             configDBquery = configDB.prepareStatement(number);
-            configDBquery.setString(1, cnumber);
+            configDBquery.setString(1, bizNumber);
             configDBquery.executeUpdate();
             configDBquery = configDB.prepareStatement(email);
-            configDBquery.setString(1, cmail);
+            configDBquery.setString(1, bizMail);
             configDBquery.executeUpdate();
             configDBquery = configDB.prepareStatement(address);
-            configDBquery.setString(1, caddress);
+            configDBquery.setString(1, bizAddress);
             configDBquery.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);

@@ -232,12 +232,15 @@ public class New_Invoice extends javax.swing.JPanel {
         if (custName.equals("") || custContact.equals("") || custAddress.equals(""))
             JOptionPane.showMessageDialog(null, "Customer Details can't be Empty. Please"
                 + " Try Again!", "Customer Details Empty", JOptionPane.ERROR_MESSAGE);
+        else if (custContact.length() != 10)
+            JOptionPane.showMessageDialog(null, "Contact Number Must be 10 Digit Long. Please"
+                + " Try Again!", "Contact Number Too Short", JOptionPane.ERROR_MESSAGE);
         else if (prodSelected == 0)
             JOptionPane.showMessageDialog(null, "At least one Product needs to be Selected. Please"
                 + " Try Again!", "No Products Selected", JOptionPane.ERROR_MESSAGE);
         else if (emptyQuan)
-            JOptionPane.showMessageDialog(null, "Purchased Quantity for one or more Products is Empty."
-                + " Please Try Again!", "Purchased Quantity Empty", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Purchased Quantity for one or more Products is Empty"
+                + "/Zero. Please Try Again!", "Purchased Quantity Empty", JOptionPane.ERROR_MESSAGE);
         else {
             String invoiceTable[][] = new String[prodSelected][5];
             int tableRow = 0;
