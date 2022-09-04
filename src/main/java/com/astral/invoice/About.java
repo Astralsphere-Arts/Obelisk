@@ -43,17 +43,17 @@ public class About extends javax.swing.JPanel {
 
         App_Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-logo.png"))); // NOI18N
 
-        Heading.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
         Heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Heading.setText("About Astral Invoice");
         Heading.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Version.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        Version.setFont(new java.awt.Font("Segoe UI Semilight", 1, 15)); // NOI18N
         Version.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Version.setText("Version " + com.astral.invoice.Main.Version);
         Version.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        About_Paragraph.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        About_Paragraph.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
         About_Paragraph.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         About_Paragraph.setText("Astral Invoice is a Software Used For Generating Invoices");
 
@@ -196,7 +196,7 @@ public class About extends javax.swing.JPanel {
                             .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(Version)
-                            .addGap(18, 18, 18)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(About_Paragraph))
                         .addComponent(App_Logo_Flipped, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(App_Logo))

@@ -24,7 +24,7 @@ public class Settings extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Settings = new javax.swing.JLabel();
+        Heading = new javax.swing.JLabel();
         Current_Value_Label = new javax.swing.JLabel();
         New_Value_Label = new javax.swing.JLabel();
         Business_Name_Label = new javax.swing.JLabel();
@@ -45,8 +45,8 @@ public class Settings extends javax.swing.JPanel {
         New_Business_Location = new javax.swing.JTextField();
         Save_Changes_Button = new javax.swing.JButton();
 
-        Settings.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Settings.setText("Settings");
+        Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
+        Heading.setText("Settings");
 
         Current_Value_Label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         Current_Value_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -127,7 +127,7 @@ public class Settings extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Settings)
+                            .addComponent(Heading)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(Business_Owner_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,7 +169,7 @@ public class Settings extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(Settings, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(New_Value_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,6 +269,7 @@ public class Settings extends javax.swing.JPanel {
     private javax.swing.JTextField Current_Email_Address;
     private javax.swing.JLabel Current_Value_Label;
     private javax.swing.JLabel Email_Address_Label;
+    private javax.swing.JLabel Heading;
     private javax.swing.JTextField New_Business_Location;
     private javax.swing.JLabel New_Business_Location_Label;
     private javax.swing.JTextField New_Business_Name;
@@ -277,6 +278,5 @@ public class Settings extends javax.swing.JPanel {
     private javax.swing.JTextField New_Email_Address;
     private javax.swing.JLabel New_Value_Label;
     private javax.swing.JButton Save_Changes_Button;
-    private javax.swing.JLabel Settings;
     // End of variables declaration//GEN-END:variables
 }

@@ -42,7 +42,7 @@ public class Product_List extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(954, 574));
 
-        Heading.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
         Heading.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Heading.setText("List of Products");
         Heading.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);

@@ -43,7 +43,7 @@ public class New_Invoice extends javax.swing.JPanel {
         Clear_All = new javax.swing.JButton();
         Create_Invoice = new javax.swing.JButton();
 
-        Heading.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
         Heading.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Heading.setText("Create New Invoice");
         Heading.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
