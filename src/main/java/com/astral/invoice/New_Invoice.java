@@ -218,7 +218,7 @@ public class New_Invoice extends javax.swing.JPanel {
         String custContact = Contact_Number.getText();
         String custAddress = Customer_Address.getText();
         String saleDate = new java.text.SimpleDateFormat("dd MMMM yyyy").format(new java.util.Date());
-        String saleAmount = "0";
+        double saleAmount = 0;
         for (int row = 0; row < New_Invoice_Table.getRowCount(); row++) {
             if (Boolean.valueOf(New_Invoice_Table.getValueAt(row, 0).toString())) {
                 prodSelected++;
@@ -250,10 +250,8 @@ public class New_Invoice extends javax.swing.JPanel {
                     String prodName = (String) New_Invoice_Table.getValueAt(row, 2);
                     String Price = Double.toString((Double) New_Invoice_Table.getValueAt(row, 3));
                     String Quantity = Integer.toString((Integer) New_Invoice_Table.getValueAt(row, 4));
-                    String netAmount = Double.toString(Double.parseDouble(Price) *
-                        Double.parseDouble(Quantity));
-                    saleAmount = Double.toString(Double.parseDouble(saleAmount) +
-                        Double.parseDouble(netAmount));
+                    String netAmount = Double.toString(Double.parseDouble(Price) * Double.parseDouble(Quantity));
+                    saleAmount = saleAmount + Double.parseDouble(netAmount);
                     invoiceTable[tableRow][0] = prodID;
                     invoiceTable[tableRow][1] = prodName;
                     invoiceTable[tableRow][2] = Price;

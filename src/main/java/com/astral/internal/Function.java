@@ -121,7 +121,7 @@ public class Function {
     }
        
     public static void invoicePDF(String invID, String custName, String custContact, String custAddress,
-            String saleDate, String saleAmount, int prodSelected, String invoiceTable[][]) {
+            String saleDate, double saleAmount, int prodSelected, String invoiceTable[][]) {
         invFolder.mkdir();
         invPath = new File(invFolder + File.separator + invID + ".pdf");
         try (Document document = new Document()) {
@@ -242,6 +242,18 @@ public class Function {
                     .format(new BigDecimal(saleAmount)), IBMPlex));
             cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell.setPadding(10f);
+            table.addCell(cell);
+            para = new Paragraph();
+            chunk = new Chunk("Total Amount in Words : ", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10));
+            para.add(chunk);
+            chunk = new Chunk("Rupees " + com.ibm.icu.lang.UCharacter.toTitleCase(new com.ibm.icu.text.RuleBasedNumberFormat
+                (new Locale("en", "in"), com.ibm.icu.text.RuleBasedNumberFormat.SPELLOUT).format(saleAmount, "%spellout-numbering"),
+                com.ibm.icu.text.BreakIterator.getWordInstance()) + " Only", IBMPlex);
+            para.add(chunk);
+            cell = new PdfPCell(para);
+            cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell.setPadding(10f);
+            cell.setColspan(5);
             table.addCell(cell);
             table.setSpacingBefore(40f);
             table.setWidthPercentage(100);
