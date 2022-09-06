@@ -4,9 +4,11 @@ import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
+import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Rectangle;
+import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
@@ -15,10 +17,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableModel;
@@ -122,6 +126,8 @@ public class Function {
         invPath = new File(invFolder + File.separator + invID + ".pdf");
         try (Document document = new Document()) {
             PdfWriter.getInstance(document, new FileOutputStream(invPath));
+            Font IBMPlex = new Font(BaseFont.createFont("/com/astral/resources/IBMPlex.ttf", BaseFont.IDENTITY_H,
+                    BaseFont.EMBEDDED), 10);
             document.open();
             Paragraph para = new Paragraph(com.astral.internal.SQLite.getConfigValue("Business Name"),
                 FontFactory.getFont(FontFactory.TIMES_BOLD, 20));
@@ -189,7 +195,7 @@ public class Function {
             cell.setBackgroundColor(TableHeader);
             cell.setPadding(10f);
             table.addCell(cell);
-            cell = new PdfPCell(new Paragraph("Unit Price", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell = new PdfPCell(new Paragraph("Price", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setBackgroundColor(TableHeader);
             cell.setPadding(10f);
@@ -205,22 +211,24 @@ public class Function {
             cell.setPadding(10f);
             table.addCell(cell);
             for (int row = 0; row < prodSelected; row++) {
-                cell = new PdfPCell(new Paragraph(String.format("%02d", row + 1), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell = new PdfPCell(new Paragraph(String.format("%02d", row + 1), IBMPlex));
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setPadding(10f);
                 table.addCell(cell);
-                cell = new PdfPCell(new Paragraph(invoiceTable[row][1], FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell = new PdfPCell(new Paragraph(invoiceTable[row][1], IBMPlex));
                 cell.setPadding(10f);
                 table.addCell(cell);
-                cell = new PdfPCell(new Paragraph(invoiceTable[row][2], FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(new Locale("en", "in"))
+                    .format(new BigDecimal(invoiceTable[row][2])), IBMPlex));
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 cell.setPadding(10f);
                 table.addCell(cell);
-                cell = new PdfPCell(new Paragraph(invoiceTable[row][3], FontFactory.getFont(FontFactory.HELVETICA, 10)));
-                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell = new PdfPCell(new Paragraph(String.format("%02d", Integer.parseInt(invoiceTable[row][3])), IBMPlex));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setPadding(10f);
                 table.addCell(cell);
-                cell = new PdfPCell(new Paragraph(invoiceTable[row][4], FontFactory.getFont(FontFactory.HELVETICA, 10)));
+                cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(new Locale("en", "in"))
+                    .format(new BigDecimal(invoiceTable[row][4])), IBMPlex));
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 cell.setPadding(10f);
                 table.addCell(cell);
@@ -230,7 +238,8 @@ public class Function {
             cell.setPadding(10f);
             cell.setColspan(4);
             table.addCell(cell);
-            cell = new PdfPCell(new Paragraph(saleAmount, FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(new Locale("en", "in"))
+                    .format(new BigDecimal(saleAmount)), IBMPlex));
             cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell.setPadding(10f);
             table.addCell(cell);
