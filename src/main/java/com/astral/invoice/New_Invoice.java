@@ -212,7 +212,7 @@ public class New_Invoice extends javax.swing.JPanel {
     private void Create_InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_InvoiceActionPerformed
         int prodSelected = 0;
         boolean emptyQuan = false;
-        String invID = "INV-" + new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date())
+        String invID = "INV-" + new java.text.SimpleDateFormat("yyMMdd-HHmmss").format(new java.util.Date())
             + "-" + com.astral.internal.Function.randomID(4);
         String custName = Customer_Name.getText();
         String custContact = Contact_Number.getText();

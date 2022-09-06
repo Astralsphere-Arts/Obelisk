@@ -123,7 +123,10 @@ public class Function {
     public static void invoicePDF(String invID, String custName, String custContact, String custAddress,
             String saleDate, double saleAmount, int prodSelected, String invoiceTable[][]) {
         invFolder.mkdir();
-        invPath = new File(invFolder + File.separator + invID + ".pdf");
+        File invSubFolder = new File(invFolder + File.separator + new java.text.SimpleDateFormat("yyyy - MMMM")
+            .format(new java.util.Date()));
+        invSubFolder.mkdir();
+        invPath = new File(invSubFolder + File.separator + invID + ".pdf");
         try (Document document = new Document()) {
             PdfWriter.getInstance(document, new FileOutputStream(invPath));
             Font IBMPlex = new Font(BaseFont.createFont("/com/astral/resources/IBMPlex.ttf", BaseFont.IDENTITY_H,
@@ -184,7 +187,7 @@ public class Function {
             chunk = new Chunk(custAddress, FontFactory.getFont(FontFactory.HELVETICA));
             para.add(chunk);
             document.add(para);
-            float[] widths = {10f, 44f, 15f, 14f, 17f};
+            float[] widths = {10f, 44f, 13f, 16f, 17f};
             table = new PdfPTable(widths);
             cell = new PdfPCell(new Paragraph("S.No.", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -195,12 +198,12 @@ public class Function {
             cell.setBackgroundColor(TableHeader);
             cell.setPadding(10f);
             table.addCell(cell);
-            cell = new PdfPCell(new Paragraph("Price", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell = new PdfPCell(new Paragraph("Quantity", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setBackgroundColor(TableHeader);
             cell.setPadding(10f);
             table.addCell(cell);
-            cell = new PdfPCell(new Paragraph("Quantity", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
+            cell = new PdfPCell(new Paragraph("Price", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10)));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setBackgroundColor(TableHeader);
             cell.setPadding(10f);
@@ -218,13 +221,13 @@ public class Function {
                 cell = new PdfPCell(new Paragraph(invoiceTable[row][1], IBMPlex));
                 cell.setPadding(10f);
                 table.addCell(cell);
+                cell = new PdfPCell(new Paragraph(String.format("%02d", Integer.parseInt(invoiceTable[row][3])), IBMPlex));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setPadding(10f);
+                table.addCell(cell);
                 cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(new Locale("en", "in"))
                     .format(new BigDecimal(invoiceTable[row][2])), IBMPlex));
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
-                cell.setPadding(10f);
-                table.addCell(cell);
-                cell = new PdfPCell(new Paragraph(String.format("%02d", Integer.parseInt(invoiceTable[row][3])), IBMPlex));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setPadding(10f);
                 table.addCell(cell);
                 cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(new Locale("en", "in"))
@@ -256,6 +259,19 @@ public class Function {
             cell.setColspan(5);
             table.addCell(cell);
             table.setSpacingBefore(40f);
+            table.setWidthPercentage(100);
+            document.add(table);
+            table = new PdfPTable(2);
+            cell = new PdfPCell(new Paragraph("THANK YOU FOR YOUR BUSINESS!", new Font(BaseFont.createFont("/com/astral/resources/IBMPlex.ttf",
+                BaseFont.IDENTITY_H, BaseFont.EMBEDDED), 12, Font.BOLD)));
+            cell.setBorder(Rectangle.NO_BORDER);
+            table.addCell(cell);
+            cell = new PdfPCell(new Paragraph("AUTHORIZED SIGNATURE", new Font(BaseFont.createFont("/com/astral/resources/IBMPlex.ttf",
+                BaseFont.IDENTITY_H, BaseFont.EMBEDDED), 12)));
+            cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell.setBorder(Rectangle.NO_BORDER);
+            table.addCell(cell);
+            table.setSpacingBefore(80f);
             table.setWidthPercentage(100);
             document.add(table);
             document.close();
