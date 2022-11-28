@@ -6,7 +6,7 @@ A Simple Invoicing Tool written in Java.
 
 1. **IDE** : [Apache NetBeans](https://netbeans.apache.org/) : Version 15
 2. **Build Tool** : [Apache Maven](https://maven.apache.org/) : Version 3.8.6
-3. **JDK** : [Azul Zulu](https://www.azul.com/downloads/) : Version 17.0.4.1+1
+3. **JDK** : [Azul Zulu](https://www.azul.com/downloads/) : Version 17.0.5+8 LTS
 
 ## Dependencies
 
