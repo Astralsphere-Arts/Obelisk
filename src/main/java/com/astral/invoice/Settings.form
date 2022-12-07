@@ -20,46 +20,43 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Heading" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="Business_Owner_Label" min="-2" pref="260" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="Current_Business_Owner" min="-2" pref="280" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="New_Business_Owner" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="Business_Owner_Label" min="-2" pref="260" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Current_Business_Owner" min="-2" pref="280" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="New_Business_Owner" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="Current_Business_Location_Label" alignment="0" pref="260" max="32767" attributes="0"/>
+                                  <Component id="New_Business_Location_Label" alignment="0" pref="260" max="32767" attributes="0"/>
+                                  <Component id="Email_Address_Label" alignment="0" pref="260" max="32767" attributes="0"/>
+                                  <Component id="Contact_Number_Label" alignment="0" pref="260" max="32767" attributes="0"/>
+                                  <Component id="Business_Name_Label" alignment="0" pref="260" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="Current_Business_Location_Label" alignment="0" pref="260" max="32767" attributes="0"/>
-                                      <Component id="New_Business_Location_Label" alignment="0" pref="260" max="32767" attributes="0"/>
-                                      <Component id="Email_Address_Label" alignment="0" pref="260" max="32767" attributes="0"/>
-                                      <Component id="Contact_Number_Label" alignment="0" pref="260" max="32767" attributes="0"/>
-                                      <Component id="Business_Name_Label" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Current_Contact_Number" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Component id="Current_Business_Name" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Component id="Current_Email_Address" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="New_Business_Name" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Component id="New_Contact_Number" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Component id="New_Email_Address" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="Current_Contact_Number" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                              <Component id="Current_Business_Name" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                              <Component id="Current_Email_Address" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="New_Business_Name" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                              <Component id="New_Contact_Number" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                              <Component id="New_Email_Address" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="Current_Business_Location" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="New_Business_Location" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="Current_Value_Label" min="-2" pref="280" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="New_Value_Label" min="-2" pref="280" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="Current_Business_Location" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="New_Business_Location" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="Current_Value_Label" min="-2" pref="280" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="New_Value_Label" min="-2" pref="280" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -69,6 +66,10 @@
                       <EmptySpace min="-2" pref="406" max="-2" attributes="0"/>
                       <Component id="Save_Changes_Button" min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="421" max="-2" attributes="0"/>
+                      <Component id="Heading" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
@@ -77,9 +78,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="Heading" min="-2" pref="45" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="New_Value_Label" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="Current_Value_Label" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
