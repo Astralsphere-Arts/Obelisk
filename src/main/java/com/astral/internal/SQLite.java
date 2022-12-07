@@ -26,7 +26,7 @@ public class SQLite {
     
     public static void initDB() {
         if (!Files.isWritable(currentDirectory))
-            dbFolder = new File(System.getenv("localappdata") + File.separator + "Astral Invoice");
+            dbFolder = new File(System.getenv("appdata") + File.separator + "Astral Invoice");
         firstUse = dbFolder.mkdir();
         dbConnect();
         if (firstUse)
