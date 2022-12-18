@@ -62,7 +62,6 @@ public class Main extends javax.swing.JFrame {
         Product_List = new javax.swing.JLabel();
         Settings = new javax.swing.JLabel();
         About = new javax.swing.JLabel();
-        Help = new javax.swing.JLabel();
         Content = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -378,27 +377,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        Help.setBackground(new java.awt.Color(255, 255, 255));
-        Help.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/help.png"))); // NOI18N
-        Help.setToolTipText("Help");
-        Help.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Help.setOpaque(true);
-        Help.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                HelpMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                HelpMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                HelpMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                HelpMousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout SideBarLayout = new javax.swing.GroupLayout(SideBar);
         SideBar.setLayout(SideBarLayout);
         SideBarLayout.setHorizontalGroup(
@@ -409,8 +387,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(SideBarLayout.createSequentialGroup()
                         .addGroup(SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(New_Invoice)
-                            .addComponent(Settings)
-                            .addComponent(Help))
+                            .addComponent(Settings))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SideBarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -428,10 +405,8 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(Product_List)
                 .addGap(18, 18, 18)
                 .addComponent(Settings)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 342, Short.MAX_VALUE)
                 .addComponent(About)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Help)
                 .addGap(26, 26, 26))
         );
 
@@ -567,7 +542,6 @@ public class Main extends javax.swing.JFrame {
         Product_List.setBackground(White);
         Settings.setBackground(White);
         About.setBackground(White);
-        Help.setBackground(White);
         Stored = New_Invoice.getBackground();
     }//GEN-LAST:event_New_InvoiceMousePressed
 
@@ -606,7 +580,6 @@ public class Main extends javax.swing.JFrame {
         Product_List.setBackground(White);
         Settings.setBackground(Active);
         About.setBackground(White);
-        Help.setBackground(White);
         Stored = Settings.getBackground();
     }//GEN-LAST:event_SettingsMousePressed
 
@@ -631,34 +604,8 @@ public class Main extends javax.swing.JFrame {
         Product_List.setBackground(White);
         Settings.setBackground(White);
         About.setBackground(Active);
-        Help.setBackground(White);
         Stored = About.getBackground();
     }//GEN-LAST:event_AboutMousePressed
-
-    private void HelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseClicked
-        Content.removeAll();
-        com.astral.invoice.Help scene = new Help();
-        scene.setBounds(0, 0, 954, 574);
-        Content.add(scene).setVisible(true);
-    }//GEN-LAST:event_HelpMouseClicked
-
-    private void HelpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseEntered
-        Stored = Help.getBackground();
-        Help.setBackground(Hover);
-    }//GEN-LAST:event_HelpMouseEntered
-
-    private void HelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseExited
-        Help.setBackground(Stored);
-    }//GEN-LAST:event_HelpMouseExited
-
-    private void HelpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMousePressed
-        New_Invoice.setBackground(White);
-        Product_List.setBackground(White);
-        Settings.setBackground(White);
-        About.setBackground(White);
-        Help.setBackground(Active);
-        Stored = Help.getBackground();
-    }//GEN-LAST:event_HelpMousePressed
 
     public static void Load_New_Invoice() {
         Content.removeAll();
@@ -686,7 +633,6 @@ public class Main extends javax.swing.JFrame {
         Product_List.setBackground(Active);
         Settings.setBackground(White);
         About.setBackground(White);
-        Help.setBackground(White);
         Stored = Product_List.getBackground();
     }
 
@@ -736,7 +682,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel Email_Address_Label;
     private javax.swing.JButton Finish_Button;
     private javax.swing.JLabel Heading;
-    private static javax.swing.JLabel Help;
     private static javax.swing.JLabel New_Invoice;
     private javax.swing.JTextField Owner_Name;
     private javax.swing.JLabel Owner_Name_Label;
