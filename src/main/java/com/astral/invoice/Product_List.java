@@ -32,7 +32,9 @@ public class Product_List extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Heading_Icon_Before = new javax.swing.JLabel();
         Heading = new javax.swing.JLabel();
+        Heading_Icon_After = new javax.swing.JLabel();
         Products_Table_Container = new javax.swing.JScrollPane();
         Products_Table = new javax.swing.JTable();
         Add = new javax.swing.JButton();
@@ -42,10 +44,15 @@ public class Product_List extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(954, 574));
 
+        Heading_Icon_Before.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Heading_Icon_Before.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-icon-45x45.png"))); // NOI18N
+
         Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
-        Heading.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Heading.setText("List of Products");
         Heading.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        Heading_Icon_After.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-icon-flipped-45x45.png"))); // NOI18N
 
         Products_Table.setModel(com.astral.internal.Function.productTableModel());
         Products_Table.setShowGrid(true);
@@ -106,8 +113,8 @@ public class Product_List extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,19 +122,24 @@ public class Product_List extends javax.swing.JPanel {
                         .addComponent(Import, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Export, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Products_Table_Container, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Products_Table_Container, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Heading_Icon_Before, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Heading)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Heading_Icon_After, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(53, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(361, 361, 361))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Heading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Heading_Icon_Before, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Heading_Icon_After, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(Products_Table_Container, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -197,6 +209,8 @@ public class Product_List extends javax.swing.JPanel {
     private javax.swing.JButton Add;
     private javax.swing.JButton Export;
     private javax.swing.JLabel Heading;
+    private javax.swing.JLabel Heading_Icon_After;
+    private javax.swing.JLabel Heading_Icon_Before;
     private javax.swing.JButton Import;
     private javax.swing.JTable Products_Table;
     private javax.swing.JScrollPane Products_Table_Container;

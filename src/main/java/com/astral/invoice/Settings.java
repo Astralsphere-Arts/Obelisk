@@ -24,7 +24,9 @@ public class Settings extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Heading_Icon_Before = new javax.swing.JLabel();
         Heading = new javax.swing.JLabel();
+        Heading_Icon_After = new javax.swing.JLabel();
         Current_Value_Label = new javax.swing.JLabel();
         New_Value_Label = new javax.swing.JLabel();
         Business_Name_Label = new javax.swing.JLabel();
@@ -45,8 +47,14 @@ public class Settings extends javax.swing.JPanel {
         New_Business_Location = new javax.swing.JTextField();
         Save_Changes_Button = new javax.swing.JButton();
 
+        Heading_Icon_Before.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Heading_Icon_Before.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-icon-45x45.png"))); // NOI18N
+
         Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
+        Heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Heading.setText("Settings");
+
+        Heading_Icon_After.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-icon-flipped-45x45.png"))); // NOI18N
 
         Current_Value_Label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         Current_Value_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -157,21 +165,27 @@ public class Settings extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Current_Value_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(New_Value_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(New_Value_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Heading_Icon_Before, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Heading)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Heading_Icon_After, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(406, 406, 406)
-                        .addComponent(Save_Changes_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(421, 421, 421)
-                        .addComponent(Heading)))
+                        .addComponent(Save_Changes_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Heading_Icon_Before, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Heading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Heading_Icon_After, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(New_Value_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Current_Value_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -271,6 +285,8 @@ public class Settings extends javax.swing.JPanel {
     private javax.swing.JLabel Current_Value_Label;
     private javax.swing.JLabel Email_Address_Label;
     private javax.swing.JLabel Heading;
+    private javax.swing.JLabel Heading_Icon_After;
+    private javax.swing.JLabel Heading_Icon_Before;
     private javax.swing.JTextField New_Business_Location;
     private javax.swing.JLabel New_Business_Location_Label;
     private javax.swing.JTextField New_Business_Name;
