@@ -45,9 +45,11 @@ public class SQLite {
     static void dbConnect() {
         try {
             mainDB = DriverManager.getConnection("jdbc:sqlite:" + dbFolder + File.separator
-                + "main.sqlite");
+                + "main.sqlite", org.sqlite.mc.SQLiteMCChacha20Config.getDefault()
+                .withKey("EVZQwk#u5PT2b*XCS$Zk").build().toProperties());
             configDB = DriverManager.getConnection("jdbc:sqlite:" + dbFolder + File.separator
-                + "config.sqlite");
+                + "config.sqlite", org.sqlite.mc.SQLiteMCChacha20Config.getDefault()
+                .withKey("EVZQwk#u5PT2b*XCS$Zk").build().toProperties());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
         }

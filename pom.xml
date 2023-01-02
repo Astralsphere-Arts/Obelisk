@@ -78,9 +78,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.xerial</groupId>
+            <groupId>io.github.willena</groupId>
             <artifactId>sqlite-jdbc</artifactId>
-            <version>3.40.0.0</version>
+            <version>3.40.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.formdev</groupId>
