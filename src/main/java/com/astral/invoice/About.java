@@ -69,6 +69,7 @@ public class About extends javax.swing.JPanel {
         Authors_Text.setEditable(false);
         Authors_Text.setBackground(new java.awt.Color(255, 255, 255));
         Authors_Text.setColumns(20);
+        Authors_Text.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         Authors_Text.setRows(5);
         Authors_Caret = (javax.swing.text.DefaultCaret)License_Text.getCaret();
         Authors_Caret.setUpdatePolicy(javax.swing.text.DefaultCaret.NEVER_UPDATE);
@@ -104,6 +105,7 @@ public class About extends javax.swing.JPanel {
         License_Text.setEditable(false);
         License_Text.setBackground(new java.awt.Color(255, 255, 255));
         License_Text.setColumns(20);
+        License_Text.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         License_Text.setRows(5);
         License_Caret = (javax.swing.text.DefaultCaret)License_Text.getCaret();
         License_Caret.setUpdatePolicy(javax.swing.text.DefaultCaret.NEVER_UPDATE);
@@ -139,6 +141,7 @@ public class About extends javax.swing.JPanel {
         Credits_Text.setEditable(false);
         Credits_Text.setBackground(new java.awt.Color(255, 255, 255));
         Credits_Text.setColumns(20);
+        Credits_Text.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         Credits_Text.setRows(5);
         Credits_Caret = (javax.swing.text.DefaultCaret)License_Text.getCaret();
         Credits_Caret.setUpdatePolicy(javax.swing.text.DefaultCaret.NEVER_UPDATE);
