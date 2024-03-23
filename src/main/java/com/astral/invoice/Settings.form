@@ -61,11 +61,9 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="Heading_Icon_Before" min="-2" pref="360" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="Heading" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="Heading_Icon_After" max="32767" attributes="0"/>
+                              <Component id="Heading_Icon_Before" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Heading" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -85,7 +83,6 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="Heading_Icon_Before" max="32767" attributes="0"/>
                   <Component id="Heading" max="32767" attributes="0"/>
-                  <Component id="Heading_Icon_After" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -147,15 +144,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Semilight" size="24" style="1"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="Settings"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Heading_Icon_After">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/astral/resources/app-icon-flipped-45x45.png"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Current_Value_Label">
