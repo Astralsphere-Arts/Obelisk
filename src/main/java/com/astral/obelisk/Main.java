@@ -12,7 +12,7 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
-        Version = "0.7-beta";
+        Version = "1.0.0";
         com.astral.internal.SQLite.initDB();
         Active = new java.awt.Color(0, 136, 255);
         Hover = new java.awt.Color(0, 165, 255);

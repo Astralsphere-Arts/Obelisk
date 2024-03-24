@@ -3,7 +3,7 @@
 set name=Obelisk
 set vendor=Astralsphere Arts
 set year=2022-2024
-set version=0.7.0
+set version=1.0.0
 
 set input_dir=target
 set working_dir=target
