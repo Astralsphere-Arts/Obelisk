@@ -229,7 +229,7 @@ public class New_Invoice extends javax.swing.JPanel {
         String saleDate = new java.text.SimpleDateFormat("dd MMMM yyyy").format(new java.util.Date());
         double saleAmount = 0;
         for (int row = 0; row < New_Invoice_Table.getRowCount(); row++) {
-            if (Boolean.valueOf(New_Invoice_Table.getValueAt(row, 0).toString())) {
+            if (Boolean.parseBoolean(New_Invoice_Table.getValueAt(row, 0).toString())) {
                 prodSelected++;
                 String Quantity = "0";
                 if (New_Invoice_Table.getValueAt(row, 4) != null)
@@ -254,7 +254,7 @@ public class New_Invoice extends javax.swing.JPanel {
             String invoiceTable[][] = new String[prodSelected][5];
             int tableRow = 0;
             for (int row = 0; row < New_Invoice_Table.getRowCount(); row++) {
-                if (Boolean.valueOf(New_Invoice_Table.getValueAt(row, 0).toString())) {
+                if (Boolean.parseBoolean(New_Invoice_Table.getValueAt(row, 0).toString())) {
                     String prodID = (String) New_Invoice_Table.getValueAt(row, 1);
                     String prodName = (String) New_Invoice_Table.getValueAt(row, 2);
                     String Price = Double.toString((Double) New_Invoice_Table.getValueAt(row, 3));

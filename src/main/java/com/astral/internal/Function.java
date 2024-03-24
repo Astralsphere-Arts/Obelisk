@@ -221,7 +221,7 @@ public class Function {
                 cell = new PdfPCell(new Paragraph(invoiceTable[row][1], IBMPlex));
                 cell.setPadding(10f);
                 table.addCell(cell);
-                cell = new PdfPCell(new Paragraph(String.format("%02d", Integer.parseInt(invoiceTable[row][3])), IBMPlex));
+                cell = new PdfPCell(new Paragraph(String.format("%02d", Integer.valueOf(invoiceTable[row][3])), IBMPlex));
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setPadding(10f);
                 table.addCell(cell);
