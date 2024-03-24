@@ -1,4 +1,4 @@
-package com.astral.invoice;
+package com.astral.obelisk;
 
 import javax.swing.JOptionPane;
 
@@ -261,7 +261,7 @@ public class Settings extends javax.swing.JPanel {
             com.astral.internal.SQLite.setConfigData(ownerName, bizName, bizNumber, bizMail, bizAddress);
             JOptionPane.showMessageDialog(null, "Your Changes Have Been Saved Successfully!",
                 "Success", JOptionPane.INFORMATION_MESSAGE);
-            com.astral.invoice.Main.Load_Settings();
+            com.astral.obelisk.Main.Load_Settings();
         }
     }//GEN-LAST:event_Save_Changes_ButtonActionPerformed
 

@@ -1,4 +1,4 @@
-package com.astral.invoice;
+package com.astral.obelisk;
 
 import java.awt.Component;
 import java.io.File;
@@ -178,10 +178,10 @@ public class Product_List extends javax.swing.JPanel {
             com.astral.internal.Function.prodCSVim(fileChooser.getSelectedFile());
             JOptionPane.showMessageDialog(null, "List of Products Imported Successfully!",
                 "Success", JOptionPane.INFORMATION_MESSAGE);
-            com.astral.invoice.Main.Content.removeAll();
-            com.astral.invoice.Product_List scene = new Product_List();
+            com.astral.obelisk.Main.Content.removeAll();
+            com.astral.obelisk.Product_List scene = new Product_List();
             scene.setBounds(0, 0, 954, 574);
-            com.astral.invoice.Main.Content.add(scene).setVisible(true);
+            com.astral.obelisk.Main.Content.add(scene).setVisible(true);
         }
     }//GEN-LAST:event_ImportActionPerformed
 

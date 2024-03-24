@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.astral.invoice</groupId>
-    <artifactId>Astral-Invoice</artifactId>
+    <groupId>com.astral</groupId>
+    <artifactId>obelisk</artifactId>
     <version>0.7-BETA</version>
     <packaging>jar</packaging>
-    <name>Astral Invoice</name>
+    <name>Obelisk</name>
     <organization><name>Astralsphere Arts</name></organization>
     <description>A Simple Invoicing Tool written in Java</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>com.astral.invoice.Main</exec.mainClass>
+        <exec.mainClass>com.astral.obelisk.Main</exec.mainClass>
     </properties>
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>${project.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -31,7 +31,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.astral.invoice.Main</mainClass>
+                            <mainClass>com.astral.obelisk.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

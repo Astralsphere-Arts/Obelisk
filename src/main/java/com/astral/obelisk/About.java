@@ -1,4 +1,4 @@
-package com.astral.invoice;
+package com.astral.obelisk;
 
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -45,17 +45,17 @@ public class About extends javax.swing.JPanel {
 
         Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
         Heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Heading.setText("About Astral Invoice");
+        Heading.setText("About Obelisk");
         Heading.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         Version.setFont(new java.awt.Font("Segoe UI Semilight", 1, 15)); // NOI18N
         Version.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Version.setText("Version " + com.astral.invoice.Main.Version);
+        Version.setText("Version " + com.astral.obelisk.Main.Version);
         Version.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         About_Paragraph.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
         About_Paragraph.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        About_Paragraph.setText("Astral Invoice is a Software Used For Generating Invoices");
+        About_Paragraph.setText("Obelisk is a Software Used For Generating Invoices");
 
         App_Logo_Flipped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-logo-flipped.png"))); // NOI18N
 

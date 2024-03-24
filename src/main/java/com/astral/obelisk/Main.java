@@ -1,4 +1,4 @@
-package com.astral.invoice;
+package com.astral.obelisk;
 
 import javax.swing.JOptionPane;
 
@@ -65,7 +65,7 @@ public class Main extends javax.swing.JFrame {
         Content = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Astral Invoice");
+        setTitle("Obelisk");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/app-icon.png")).getImage());
         setUndecorated(true);
         setResizable(false);
@@ -92,7 +92,7 @@ public class Main extends javax.swing.JFrame {
         Window_Title.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         Window_Title.setForeground(new java.awt.Color(142, 142, 142));
         Window_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Window_Title.setText("A S T R A L    I N V O I C E");
+        Window_Title.setText("O B E L I S K");
         Window_Title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Window_Title.setPreferredSize(new java.awt.Dimension(142, 16));
         Window_Title.setRequestFocusEnabled(false);
@@ -146,12 +146,12 @@ public class Main extends javax.swing.JFrame {
 
         Heading.setFont(new java.awt.Font("Segoe UI Semilight", 1, 30)); // NOI18N
         Heading.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Heading.setText("Welcome To Astral Invoice!");
+        Heading.setText("Welcome To Obelisk!");
         Heading.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         Paragraph_A.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
         Paragraph_A.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Paragraph_A.setText("Since this is Your First Time using Astral Invoice,");
+        Paragraph_A.setText("Since this is Your First Time using Obelisk,");
         Paragraph_A.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         Paragraph_B.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
@@ -359,7 +359,7 @@ public class Main extends javax.swing.JFrame {
         About.setBackground(new java.awt.Color(255, 255, 255));
         About.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         About.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/astral/resources/about.png"))); // NOI18N
-        About.setToolTipText("About Astral Invoice");
+        About.setToolTipText("About Obelisk");
         About.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         About.setOpaque(true);
         About.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -585,7 +585,7 @@ public class Main extends javax.swing.JFrame {
 
     private void AboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AboutMouseClicked
         Content.removeAll();
-        com.astral.invoice.About scene = new About();
+        com.astral.obelisk.About scene = new About();
         scene.setBounds(0, 0, 954, 574);
         Content.add(scene).setVisible(true);
     }//GEN-LAST:event_AboutMouseClicked
@@ -609,21 +609,21 @@ public class Main extends javax.swing.JFrame {
 
     public static void Load_New_Invoice() {
         Content.removeAll();
-        com.astral.invoice.New_Invoice scene = new New_Invoice();
+        com.astral.obelisk.New_Invoice scene = new New_Invoice();
         scene.setBounds(0, 0, 954, 574);
         Content.add(scene).setVisible(true);
     }
     
     public static void Load_Product_List() {
         Content.removeAll();
-        com.astral.invoice.Product_List scene = new Product_List();
+        com.astral.obelisk.Product_List scene = new Product_List();
         scene.setBounds(0, 0, 954, 574);
         Content.add(scene).setVisible(true);
     }
     
     public static void Load_Settings() {
         Content.removeAll();
-        com.astral.invoice.Settings scene = new Settings();
+        com.astral.obelisk.Settings scene = new Settings();
         scene.setBounds(0, 0, 954, 574);
         Content.add(scene).setVisible(true);
     }

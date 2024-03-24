@@ -1,5 +1,5 @@
 
-  Some features of Astral Invoice rely on external libraries here is a list of them:
+  Some features of Obelisk rely on external libraries here is a list of them:
 
   1. SQLite JDBC Crypt - https://github.com/Willena/sqlite-jdbc-crypt
   2. FlatLaf - https://www.formdev.com/flatlaf

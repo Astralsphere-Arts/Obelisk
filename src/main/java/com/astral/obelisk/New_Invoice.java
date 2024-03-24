@@ -1,4 +1,4 @@
-package com.astral.invoice;
+package com.astral.obelisk;
 
 import java.awt.Component;
 import java.awt.Desktop;
@@ -210,12 +210,12 @@ public class New_Invoice extends javax.swing.JPanel {
     }//GEN-LAST:event_InvoicesActionPerformed
 
     private void Edit_ListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_ListActionPerformed
-        com.astral.invoice.Main.Product_List_Icon_Active();
-        com.astral.invoice.Main.Load_Product_List();
+        com.astral.obelisk.Main.Product_List_Icon_Active();
+        com.astral.obelisk.Main.Load_Product_List();
     }//GEN-LAST:event_Edit_ListActionPerformed
 
     private void Clear_AllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clear_AllActionPerformed
-        com.astral.invoice.Main.Load_New_Invoice();
+        com.astral.obelisk.Main.Load_New_Invoice();
     }//GEN-LAST:event_Clear_AllActionPerformed
 
     private void Create_InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_InvoiceActionPerformed
