@@ -11,7 +11,7 @@ A Simple Invoicing Tool written in Java.
 
 ## Dependencies
 
-1. **[SQLite JDBC Crypt](https://github.com/Willena/sqlite-jdbc-crypt)** : Version 3.45.1.0
-2. **[FlatLaf](https://www.formdev.com/flatlaf/)** : Version 3.4
-3. **[OpenPDF](https://github.com/LibrePDF/OpenPDF)** : Version 1.3.40
-4. **[ICU4J](https://icu.unicode.org/)** : Version 74.2
+1. **[SQLite JDBC Crypt](https://github.com/Willena/sqlite-jdbc-crypt)** : Version 3.46.0.0
+2. **[OpenPDF](https://github.com/LibrePDF/OpenPDF)** : Version 1.3.40
+3. **[FlatLaf](https://www.formdev.com/flatlaf/)** : Version 3.5
+4. **[ICU4J](https://icu.unicode.org/)** : Version 75.1
