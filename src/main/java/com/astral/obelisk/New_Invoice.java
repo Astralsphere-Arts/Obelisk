@@ -279,6 +279,12 @@ public class New_Invoice extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_Create_InvoiceActionPerformed
 
+    public void New_Invoice_Table_Hide_Columns() {
+        New_Invoice_Table.getColumnModel().getColumn(1).setMinWidth(0);
+        New_Invoice_Table.getColumnModel().getColumn(1).setMaxWidth(0);
+        New_Invoice_Table.getColumnModel().getColumn(1).setWidth(0);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Clear_All;
     private javax.swing.JTextField Contact_Number;

@@ -611,6 +611,7 @@ public class Main extends javax.swing.JFrame {
         Content.removeAll();
         com.astral.obelisk.New_Invoice scene = new New_Invoice();
         scene.setBounds(0, 0, 954, 574);
+        scene.New_Invoice_Table_Hide_Columns();
         Content.add(scene).setVisible(true);
     }
     
