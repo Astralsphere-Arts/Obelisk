@@ -157,7 +157,7 @@ public class Product_List extends javax.swing.JPanel {
     }
     
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        Products_Table_Model.addRow(new Object[] {"AI-" + com.astral.internal.Function.randomID(4)
+        Products_Table_Model.addRow(new Object[] {"OSK-" + com.astral.internal.Function.randomID(4)
             + "-" + com.astral.internal.Function.randomID(4), null, null, null});
     }//GEN-LAST:event_AddActionPerformed
 
