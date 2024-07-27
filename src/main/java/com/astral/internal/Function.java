@@ -225,12 +225,12 @@ public class Function {
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setPadding(10f);
                 table.addCell(cell);
-                cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(new Locale("en", "in"))
+                cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(Locale.of("en", "in"))
                     .format(new BigDecimal(invoiceTable[row][2])), IBMPlex));
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 cell.setPadding(10f);
                 table.addCell(cell);
-                cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(new Locale("en", "in"))
+                cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(Locale.of("en", "in"))
                     .format(new BigDecimal(invoiceTable[row][4])), IBMPlex));
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 cell.setPadding(10f);
@@ -241,7 +241,7 @@ public class Function {
             cell.setPadding(10f);
             cell.setColspan(4);
             table.addCell(cell);
-            cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(new Locale("en", "in"))
+            cell = new PdfPCell(new Paragraph(com.ibm.icu.text.NumberFormat.getCurrencyInstance(Locale.of("en", "in"))
                     .format(new BigDecimal(saleAmount)), IBMPlex));
             cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell.setPadding(10f);
@@ -250,7 +250,7 @@ public class Function {
             chunk = new Chunk("Total Amount in Words : ", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10));
             para.add(chunk);
             chunk = new Chunk("Rupees " + com.ibm.icu.lang.UCharacter.toTitleCase(new com.ibm.icu.text.RuleBasedNumberFormat
-                (new Locale("en", "in"), com.ibm.icu.text.RuleBasedNumberFormat.SPELLOUT).format(saleAmount, "%spellout-numbering"),
+                (Locale.of("en", "in"), com.ibm.icu.text.RuleBasedNumberFormat.SPELLOUT).format(saleAmount, "%spellout-numbering"),
                 com.ibm.icu.text.BreakIterator.getWordInstance()) + " Only", IBMPlex);
             para.add(chunk);
             cell = new PdfPCell(para);
